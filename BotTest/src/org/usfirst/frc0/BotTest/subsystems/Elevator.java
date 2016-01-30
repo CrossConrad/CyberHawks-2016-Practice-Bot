@@ -40,7 +40,6 @@ public class Elevator extends Subsystem {
 
     public void elevatorMove(double elevatorSpeed) {
     	elevatorVertical.set(elevatorSpeed);
-   
     }
     
     public void initDefaultCommand() {
