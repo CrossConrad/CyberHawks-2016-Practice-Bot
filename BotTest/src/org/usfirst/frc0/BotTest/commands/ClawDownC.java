@@ -41,6 +41,11 @@ public class ClawDownC extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if(Robot.claw.topLimit.get() == false) {
+        	Robot.claw.clawMove(-0.5);
+    	} else {
+    		Robot.claw.clawMoveStop();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
