@@ -11,6 +11,7 @@
 
 package org.usfirst.frc0.BotTest.commands;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc0.BotTest.Robot;
 
@@ -23,6 +24,9 @@ public class Drive extends Command {
     	}
     protected void execute() {
     	Robot.chasis.move(Robot.oi.getRightSpeed(), Robot.oi.getLeftSpeed());
+    	if (Robot.chasis.stafeSolenoid.get() != DoubleSolenoid.Value.kForward) {
+    		Robot.chasis.chasisStrafe(Robot.oi.rightJoy.getX());
+    	}
     }
     protected boolean isFinished() {
         return false;

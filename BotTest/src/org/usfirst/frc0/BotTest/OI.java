@@ -92,7 +92,15 @@ public class OI {
         pivotUp.whileHeld(new PivotUpC());
         strafeTrigger = new JoystickButton(rightJoy, 1);
         strafeTrigger.whileHeld(new Strafe());
-
+        
+        elevatorUp.whenReleased(new Stop());
+        elevatorDown.whenReleased(new Stop());
+        
+        pivotUp.whenReleased(new ClawPivotStop());
+        pivotDown.whenReleased(new ClawPivotStop());
+        
+        clawUp.whenReleased(new ClawMoveStop());
+        clawDown.whenReleased(new ClawMoveStop());
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
