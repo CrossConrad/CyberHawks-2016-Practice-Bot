@@ -28,8 +28,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  *
  */
 public class Chasis extends Subsystem {
-	private Talon RDrive;
-	private Talon LDrive;
+
 	
 
 	public static void init(){
@@ -59,12 +58,12 @@ public class Chasis extends Subsystem {
     }
     
 public void move(double RSpeed, double LSpeed){
-	RDrive.set(RSpeed);
-	LDrive.set(LSpeed);
+	RobotMap.chasisRightMotor.set(-1 * RSpeed);
+	RobotMap.chasisLeftMotor.set(LSpeed);
 }
 public void stop(){
-	LDrive.set(0);
-	RDrive.set(0);
+	RobotMap.chasisLeftMotor.set(0);
+	RobotMap.chasisRightMotor.set(0);
     }
 }
 
