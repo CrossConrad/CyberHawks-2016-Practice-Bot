@@ -82,9 +82,6 @@ public class OI {
         clawOpener = new JoystickButton(xbox, 1);
         clawOpener.whileHeld(new ClawOpenerC());
         
-        elevatorUp.whenReleased(new Stop());
-        elevatorDown.whenReleased(new Stop());
-        
         leftJoy = new Joystick(1);
         
         rightJoy = new Joystick(0);
