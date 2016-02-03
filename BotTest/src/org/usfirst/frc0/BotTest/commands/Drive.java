@@ -17,12 +17,20 @@ import org.usfirst.frc0.BotTest.Robot;
 
 
 public class Drive extends Command {
-		public Drive() {
+	
+	float time = 0;
+	float currentRightSpeed = 0;
+	float currentLeftSpeed = 0;
+	float fullRightSpeed;
+	float fullLeftSpeed;
+
+	public Drive() {
 			requires(Robot.chasis);
 		}
     protected void initialize() {
     	}
     protected void execute() {
+    	float finalSpeed;
     	Robot.chasis.move(Robot.oi.getRightSpeed(), Robot.oi.getLeftSpeed());
     	if (Robot.chasis.stafeSolenoid.get() != DoubleSolenoid.Value.kForward) {
     		Robot.chasis.chasisStrafe(Robot.oi.rightJoy.getX());
