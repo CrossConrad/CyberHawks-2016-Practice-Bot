@@ -18,22 +18,44 @@ import org.usfirst.frc0.BotTest.Robot;
 
 public class Drive extends Command {
 	
-	float time = 0;
-	float currentRightSpeed = 0;
-	float currentLeftSpeed = 0;
-	float fullRightSpeed;
-	float fullLeftSpeed;
+	private double steps = 5;
+	
+	double currentRightSpeed = 0;
+    double currentLeftSpeed = 0;
+	double fullRightSpeed = 0;
+	double fullLeftSpeed = 0;
+	double rightSpeedDifference = 0;
+	double leftSpeedDifference = 0;
+	double leftSpeedIncrement = 0;
+	double rightSpeedIncrement = 0;
 
 	public Drive() {
-			requires(Robot.chasis);
-		}
-    protected void initialize() {
-    	}
-    protected void execute() {
-    	Robot.chasis.move(Robot.oi.getRightSpeed(), Robot.oi.getLeftSpeed());
+		requires(Robot.chasis);
+	}
+   
+	protected void initialize() {
+    }
+    
+	protected void execute() {
+    	
+    	fullLeftSpeed = Robot.oi.getLeftSpeed();
+    	fullRightSpeed = Robot.oi.getRightSpeed();
+    	
+    	rightSpeedDifference = fullRightSpeed - currentRightSpeed;
+    	leftSpeedDifference = fullRightSpeed - currentRightSpeed;
+    	
+    	rightSpeedIncrement = rightSpeedDifference / steps;
+    	leftSpeedIncrement = leftSpeedDifference / steps;
+    	
+    	currentRightSpeed += rightSpeedIncrement;
+    	currentLeftSpeed += leftSpeedIncrement;
+    	
+    	Robot.chasis.move(currentRightSpeed, currentLeftSpeed);
+    	
     	if (Robot.chasis.stafeSolenoid.get() != DoubleSolenoid.Value.kForward) {
     		Robot.chasis.chasisStrafe(Robot.oi.rightJoy.getX());
     	}
+    	
     }
     protected boolean isFinished() {
         return false;
