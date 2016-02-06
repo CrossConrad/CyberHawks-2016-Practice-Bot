@@ -2,8 +2,8 @@ package org.usfirst.frc0.BotTest;
 
 public class Constants {
 	// Port Constants
-	public static final int CHASSSIS_RIGHT_MOTOR = 1;
-	public static final int CHASIS_LEFT_MOTOR = 0;
+	public static final int CHASSIS_RIGHT_MOTOR = 1;
+	public static final int CHASSIS_LEFT_MOTOR = 0;
 	public static final int CHASSIS_STRAFE_MOTOR = 2;
 	
 	public static final int CHASSIS_SOLENOID_A = 0;
