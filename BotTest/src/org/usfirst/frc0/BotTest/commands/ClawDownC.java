@@ -43,9 +43,9 @@ public class ClawDownC extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	// Checks if the claw has reached its bottom limit
-    	if(Robot.claw.bottomLimit.get() == false) {
+    	if(Robot.claw.bottomLimit.get() == true) {
     		// Sets the claw motor to move down
-        	Robot.claw.clawMove(-0.5);
+        	Robot.claw.clawMove(-0.25);
     	} else {
     		// Stops the claw from moving if it has reached the limit
     		Robot.claw.clawMoveStop();

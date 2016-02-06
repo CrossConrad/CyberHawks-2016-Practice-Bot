@@ -43,9 +43,9 @@ public class ClawUpC extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	// Checks to see if the claw has reached top limit
-    	if(Robot.claw.topLimit.get() == false) {
+    	if(Robot.claw.topLimit.get() == true) {
     		// Sets the claw to move down
-        	Robot.claw.clawMove(0.5);
+        	Robot.claw.clawMove(0.25);
     	} else {
     		// Stops the claw if it has reached its top limit
     		Robot.claw.clawMoveStop();

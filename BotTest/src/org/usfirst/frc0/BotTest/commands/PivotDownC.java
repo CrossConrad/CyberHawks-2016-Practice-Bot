@@ -43,7 +43,7 @@ public class PivotDownC extends Command {
     // Called repeatedly when this Command is scheduled to run
     
     protected void execute() {   //Allows the claw to pivot down
-    	if(Robot.claw.bottomLimit.get() == false) {
+    	if(Robot.claw.bottomLimit.get() == true) {
     		Robot.claw.clawPivot(-0.5);
     	} else {
     		Robot.claw.clawPivotStop();

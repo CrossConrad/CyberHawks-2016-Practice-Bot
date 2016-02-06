@@ -42,7 +42,7 @@ public class PivotUpC extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {        //This allows the claw to pivot up
-    	if(Robot.claw.topLimit.get() == false) {
+    	if(Robot.claw.topLimit.get() == true) {
         	Robot.claw.clawPivot(0.5);
     	} else {
     		Robot.claw.clawPivotStop();

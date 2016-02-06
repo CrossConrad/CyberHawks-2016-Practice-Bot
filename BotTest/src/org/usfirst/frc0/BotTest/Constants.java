@@ -7,8 +7,8 @@ public class Constants {
 	public static final int CHASSIS_STRAFE_MOTOR = 2;
 	
 	public static final int CHASSIS_SOLENOID_A = 0;
-	public static final int CHASSIS_SOLENOID_B = 2;
-	public static final int CHASSIS_SOLENOID_C = 3;
+	public static final int CHASSIS_SOLENOID_B = 0;
+	public static final int CHASSIS_SOLENOID_C = 1;
 	
 	public static final int CLAW_VERTICAL = 4;
 	public static final int CLAW_PIVOT = 5;

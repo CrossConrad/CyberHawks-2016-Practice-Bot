@@ -45,18 +45,13 @@ public class Drive extends Command {
     	fullRightSpeed = Robot.oi.getRightSpeed();
     	
     	// Produces a weighted average of currentSpeed and fullSpeed
-    	currentRightSpeed = ((currentRightSpeed * steps)+ fullRightSpeed) / 2;
-    	currentLeftSpeed = ((currentLeftSpeed * steps) + fullLeftSpeed) / 2;
+    	currentRightSpeed = ((currentRightSpeed * steps)+ fullRightSpeed) / (steps+1);
+    	currentLeftSpeed = ((currentLeftSpeed * steps) + fullLeftSpeed) / (steps+1);
     	
     	// Sets the motor speeds to the currentSpeeds
-    	Robot.chasis.move(currentRightSpeed, currentLeftSpeed);
+    	Robot.chasis.move(currentRightSpeed, currentLeftSpeed, Robot.oi.rightJoy.getX());
     	System.out.println(currentRightSpeed + " | " + currentLeftSpeed);
     	
-    	// Checks if the strafeSolenoid is activated
-    	if (Robot.chasis.stafeSolenoid.get() != DoubleSolenoid.Value.kForward) {
-    		// Sets the speed of the strafeMotor
-    		Robot.chasis.chasisStrafe(Robot.oi.rightJoy.getX());
-    	}
     	
     }
     protected boolean isFinished() {
