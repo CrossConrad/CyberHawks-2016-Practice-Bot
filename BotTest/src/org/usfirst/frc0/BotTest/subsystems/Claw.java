@@ -45,15 +45,15 @@ public class Claw extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
-    public void clawPivot(double clawPivotSpeed) {
+    public void clawPivot(double clawPivotSpeed) {   //Allows the claw to pivot
     	pivot.set(clawPivotSpeed);
     }
     
-    public void clawPivotStop() {
+    public void clawPivotStop() {    
     	pivot.set(0);
     }
     
-    public void clawMove(double clawMoveSpeed) {
+    public void clawMove(double clawMoveSpeed) {  //Moves the claw vertically
     	clawVertical.set(clawMoveSpeed);
     }
     
@@ -61,7 +61,7 @@ public class Claw extends Subsystem {
     	clawVertical.set(0);
     }
     
-    public void clawOpen() {
+    public void clawOpen() {    // Opens the claw with the Solenoid
     	if (clawSolenoid.get() == DoubleSolenoid.Value.kReverse || clawSolenoid.get() == DoubleSolenoid.Value.kOff){
     		clawSolenoid.set(DoubleSolenoid.Value.kForward);
     	} else if (clawSolenoid.get() == DoubleSolenoid.Value.kForward){
@@ -69,7 +69,7 @@ public class Claw extends Subsystem {
     	}
     }
     
-    public void clawSolenoidStop() {
+    public void clawSolenoidStop() {         
     	clawSolenoid.set(DoubleSolenoid.Value.kOff);
     }
  
