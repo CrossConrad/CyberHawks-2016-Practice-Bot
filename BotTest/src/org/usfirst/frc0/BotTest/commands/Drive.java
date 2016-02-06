@@ -19,7 +19,7 @@ import org.usfirst.frc0.BotTest.Robot;
 public class Drive extends Command {
 	
 	// Amount of steps to take to get to full speed
-	private double steps = 5;
+	private double steps = 3;
 	
 	// The current speed of the motors
 	double currentRightSpeed = 0;
@@ -54,7 +54,7 @@ public class Drive extends Command {
     	
     	// Sets the speed differences
     	rightSpeedDifference = fullRightSpeed - currentRightSpeed;
-    	leftSpeedDifference = fullRightSpeed - currentRightSpeed;
+    	leftSpeedDifference = fullLeftSpeed - currentLeftSpeed;
     	
     	/* Sets the increment to the speed difference divided by 
     	the number of steps to take */
@@ -67,6 +67,7 @@ public class Drive extends Command {
     	
     	// Sets the motor speeds to the currentSpeeds
     	Robot.chasis.move(currentRightSpeed, currentLeftSpeed);
+    	System.out.println(currentRightSpeed + " | " + currentLeftSpeed);
     	
     	// Checks if the strafeSolenoid is activated
     	if (Robot.chasis.stafeSolenoid.get() != DoubleSolenoid.Value.kForward) {

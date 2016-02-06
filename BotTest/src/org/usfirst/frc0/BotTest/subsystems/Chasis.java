@@ -57,7 +57,7 @@ public class Chasis extends Subsystem {
     
     public void move(double RSpeed, double LSpeed){   //Creates the move function
 		rightMotor.set(RSpeed);
-		leftMotor.set(LSpeed);
+		leftMotor.set(-LSpeed);
 	}
     
 	public void stop(){          //Creates the stop function
@@ -68,6 +68,5 @@ public class Chasis extends Subsystem {
 	public void chasisStrafe(double SSpeed) {     //Creates the strafe function
 		strafeMotor.set(SSpeed);
 	}
-	
 }
 

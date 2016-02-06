@@ -43,7 +43,7 @@ public class ElevatorUpC extends Command {
     // Called repeatedly when this Command is scheduled to run
     
     protected void execute() {   //Moves the elevator up
-    	Robot.elevator.elevatorMove(0.25);
+    	Robot.elevator.elevatorMove(0.75);
     }
 
     // Make this return true when this Command no longer needs to run execute()
