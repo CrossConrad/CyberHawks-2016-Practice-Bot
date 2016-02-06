@@ -18,18 +18,28 @@ import org.usfirst.frc0.BotTest.Robot;
 
 public class Drive extends Command {
 	
+	// Amount of steps to take to get to full speed
 	private double steps = 5;
 	
+	// The current speed of the motors
 	double currentRightSpeed = 0;
     double currentLeftSpeed = 0;
+    
+    /* The raw speed the of the motors without smooth acceleration, the
+    speed of the Joystick */
 	double fullRightSpeed = 0;
 	double fullLeftSpeed = 0;
+	
+	// The difference between the full speed and the current speed 
 	double rightSpeedDifference = 0;
 	double leftSpeedDifference = 0;
+	
+	// The amount to increment the current speed by on each iteration execute()
 	double leftSpeedIncrement = 0;
 	double rightSpeedIncrement = 0;
 
 	public Drive() {
+		// Requires the Chassis subsystem
 		requires(Robot.chasis);
 	}
    
@@ -38,21 +48,29 @@ public class Drive extends Command {
     
 	protected void execute() {
     	
-    	fullLeftSpeed = Robot.oi.getLeftSpeed();
+    	// Sets the fullSpeeds to the speed of the motors
+		fullLeftSpeed = Robot.oi.getLeftSpeed();
     	fullRightSpeed = Robot.oi.getRightSpeed();
     	
+    	// Sets the speed differences
     	rightSpeedDifference = fullRightSpeed - currentRightSpeed;
     	leftSpeedDifference = fullRightSpeed - currentRightSpeed;
     	
+    	/* Sets the increment to the speed difference divided by 
+    	the number of steps to take */
     	rightSpeedIncrement = rightSpeedDifference / steps;
     	leftSpeedIncrement = leftSpeedDifference / steps;
     	
+    	// Increments the current speed
     	currentRightSpeed += rightSpeedIncrement;
     	currentLeftSpeed += leftSpeedIncrement;
     	
+    	// Sets the motor speeds to the currentSpeeds
     	Robot.chasis.move(currentRightSpeed, currentLeftSpeed);
     	
+    	// Checks if the strafeSolenoid is activated
     	if (Robot.chasis.stafeSolenoid.get() != DoubleSolenoid.Value.kForward) {
+    		// Sets the speed of the strafeMotor
     		Robot.chasis.chasisStrafe(Robot.oi.rightJoy.getX());
     	}
     	
