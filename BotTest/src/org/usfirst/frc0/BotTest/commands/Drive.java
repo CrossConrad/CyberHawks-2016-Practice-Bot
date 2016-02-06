@@ -29,14 +29,6 @@ public class Drive extends Command {
     speed of the Joystick */
 	double fullRightSpeed = 0;
 	double fullLeftSpeed = 0;
-	
-	// The difference between the full speed and the current speed 
-	double rightSpeedDifference = 0;
-	double leftSpeedDifference = 0;
-	
-	// The amount to increment the current speed by on each iteration execute()
-	double leftSpeedIncrement = 0;
-	double rightSpeedIncrement = 0;
 
 	public Drive() {
 		// Requires the Chassis subsystem
@@ -52,18 +44,9 @@ public class Drive extends Command {
 		fullLeftSpeed = Robot.oi.getLeftSpeed();
     	fullRightSpeed = Robot.oi.getRightSpeed();
     	
-    	// Sets the speed differences
-    	rightSpeedDifference = fullRightSpeed - currentRightSpeed;
-    	leftSpeedDifference = fullLeftSpeed - currentLeftSpeed;
-    	
-    	/* Sets the increment to the speed difference divided by 
-    	the number of steps to take */
-    	rightSpeedIncrement = rightSpeedDifference / steps;
-    	leftSpeedIncrement = leftSpeedDifference / steps;
-    	
-    	// Increments the current speed
-    	currentRightSpeed += rightSpeedIncrement;
-    	currentLeftSpeed += leftSpeedIncrement;
+    	// Produces a weighted average of currentSpeed and fullSpeed
+    	currentRightSpeed = ((currentRightSpeed * steps)+ fullRightSpeed) / 2;
+    	currentLeftSpeed = ((currentLeftSpeed * steps) + fullLeftSpeed) / 2;
     	
     	// Sets the motor speeds to the currentSpeeds
     	Robot.chasis.move(currentRightSpeed, currentLeftSpeed);
