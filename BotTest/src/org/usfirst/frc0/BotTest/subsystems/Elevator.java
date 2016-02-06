@@ -38,11 +38,11 @@ public class Elevator extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public void elevatorMove(double elevatorSpeed) {
+    public void elevatorMove(double elevatorSpeed) {    //Moves elevator vertically
     	elevatorVertical.set(elevatorSpeed);
     }
     
-    public void elevatorStop() {
+    public void elevatorStop() {         //Stops elevator from moving
     	elevatorVertical.set(0);
     }
     
