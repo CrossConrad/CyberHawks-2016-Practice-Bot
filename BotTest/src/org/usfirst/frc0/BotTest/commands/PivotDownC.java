@@ -12,6 +12,8 @@
 package org.usfirst.frc0.BotTest.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc0.BotTest.Constants;
 import org.usfirst.frc0.BotTest.Robot;
 
 /**
@@ -44,7 +46,7 @@ public class PivotDownC extends Command {
     
     protected void execute() {   //Allows the claw to pivot down
     	if(Robot.claw.bottomLimit.get() == true) {
-    		Robot.claw.clawPivot(-0.5);
+    		Robot.claw.clawPivot(Constants.CLAW_SPEED * -1);
     	} else {
     		Robot.claw.clawPivotStop();
     	}

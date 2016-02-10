@@ -91,7 +91,7 @@ public class OI {
         pivotUp = new JoystickButton(leftJoy, 1);
         pivotUp.whileHeld(new PivotUpC());
         strafeTrigger = new JoystickButton(rightJoy, 1);
-        strafeTrigger.whenPressed(new Strafe());
+        strafeTrigger.whileHeld(new Strafe());
         
         elevatorUp.whenReleased(new Stop());
         elevatorDown.whenReleased(new Stop());

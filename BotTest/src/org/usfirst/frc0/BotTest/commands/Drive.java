@@ -19,16 +19,18 @@ import org.usfirst.frc0.BotTest.Robot;
 public class Drive extends Command {
 	
 	// Amount of steps to take to get to full speed
-	private double steps = 3;
+	private double steps = 4;
 	
 	// The current speed of the motors
 	double currentRightSpeed = 0;
     double currentLeftSpeed = 0;
+    double currentStrafeSpeed = 0;
     
     /* The raw speed the of the motors without smooth acceleration, the
     speed of the Joystick */
 	double fullRightSpeed = 0;
 	double fullLeftSpeed = 0;
+	double fullStrafeSpeed = 0;
 
 	public Drive() {
 		// Requires the Chassis subsystem
@@ -49,10 +51,17 @@ public class Drive extends Command {
     	currentLeftSpeed = ((currentLeftSpeed * steps) + fullLeftSpeed) / (steps+1);
     	
     	// Sets the motor speeds to the currentSpeeds
-    	Robot.chasis.move(currentRightSpeed, currentLeftSpeed, Robot.oi.rightJoy.getX());
+    	if (Robot.chasis.stafeSolenoid.get() != DoubleSolenoid.Value.kForward) {
+    	   	Robot.chasis.move(currentRightSpeed, currentLeftSpeed);
+    	}
     	System.out.println(currentRightSpeed + " | " + currentLeftSpeed);
     	
-    	
+    	if (Robot.chasis.stafeSolenoid.get() == DoubleSolenoid.Value.kForward) {
+    		// Same as above
+    		fullStrafeSpeed = Robot.oi.rightJoy.getX();
+    		currentStrafeSpeed = ((currentStrafeSpeed * steps) + fullStrafeSpeed) / (steps+1);
+    		Robot.chasis.strafe(currentStrafeSpeed);
+    	}
     }
     protected boolean isFinished() {
         return false;

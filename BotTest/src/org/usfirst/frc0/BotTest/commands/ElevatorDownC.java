@@ -12,6 +12,8 @@
 package org.usfirst.frc0.BotTest.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc0.BotTest.Constants;
 import org.usfirst.frc0.BotTest.Robot;
 
 /**
@@ -42,7 +44,7 @@ public class ElevatorDownC extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {   //Moves the elevator down
-    	Robot.elevator.elevatorMove(-0.75);
+    	Robot.elevator.elevatorMove(Constants.ELEVATOR_TOTE_SPEED * -1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

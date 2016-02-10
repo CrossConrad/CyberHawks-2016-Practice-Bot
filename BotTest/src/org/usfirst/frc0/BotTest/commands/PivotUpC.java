@@ -12,6 +12,8 @@
 package org.usfirst.frc0.BotTest.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc0.BotTest.Constants;
 import org.usfirst.frc0.BotTest.Robot;
 
 /**
@@ -43,7 +45,7 @@ public class PivotUpC extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {        //This allows the claw to pivot up
     	if(Robot.claw.topLimit.get() == true) {
-        	Robot.claw.clawPivot(0.5);
+        	Robot.claw.clawPivot(Constants.CLAW_SPEED);
     	} else {
     		Robot.claw.clawPivotStop();
     	}

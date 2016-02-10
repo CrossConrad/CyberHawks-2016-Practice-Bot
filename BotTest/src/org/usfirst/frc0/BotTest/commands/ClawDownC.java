@@ -12,6 +12,8 @@
 package org.usfirst.frc0.BotTest.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc0.BotTest.Constants;
 import org.usfirst.frc0.BotTest.Robot;
 
 /**
@@ -45,7 +47,7 @@ public class ClawDownC extends Command {
     	// Checks if the claw has reached its bottom limit
     	if(Robot.claw.bottomLimit.get() == true) {
     		// Sets the claw motor to move down
-        	Robot.claw.clawMove(-0.25);
+        	Robot.claw.clawMove(Constants.CLAW_SPEED * -1);
     	} else {
     		// Stops the claw from moving if it has reached the limit
     		Robot.claw.clawMoveStop();

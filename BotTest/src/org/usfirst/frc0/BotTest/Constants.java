@@ -30,4 +30,7 @@ public class Constants {
 	public static final int ELEVATOR_HOOK_HEIGHT_B = 0;
 	public static final int ELEVATOR_HOOK_HEIGHT_C = 0;
 	
+	public static final double ELEVATOR_TOTE_SPEED = .5;
+	public static final double CLAW_SPEED = .25;
+	
 }
